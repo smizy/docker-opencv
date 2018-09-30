@@ -4,7 +4,7 @@ all: runtime
 
 .PHONY: clean
 clean:
-	docker rmi -f smizy/pytorch:${TAG} || :
+	docker rmi -f smizy/opencv:${TAG} || :
 
 .PHONY: runtime
 runtime:
@@ -12,8 +12,8 @@ runtime:
 		--build-arg BUILD_DATE=${BUILD_DATE} \
 		--build-arg VCS_REF=${VCS_REF} \
 		--build-arg VERSION=${VERSION} \
-		--rm -t smizy/pytorch:${TAG} .
-	docker images | grep pytorch
+		--rm -t smizy/opencv:${TAG} .
+	docker images | grep opencv
 
 .PHONY: test
 test:
