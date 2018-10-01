@@ -25,6 +25,8 @@ RUN set -x \
         ffmpeg-libs \
         gstreamer \
         gst-plugins-base \
+        gtk+3.0 \
+        gtk+ \
         jasper \
         libavc1394 \
         # libdc1394 \
@@ -44,6 +46,8 @@ RUN set -x \
         ffmpeg-dev \
         gstreamer-dev \
         gst-plugins-base-dev \
+        gtk+3.0-dev \
+        gtk+-dev \
         jasper-dev \
         libavc1394-dev \
         # libdc1394-dev \
@@ -109,3 +113,8 @@ RUN set -x \
         /root/.[acpw]* \
         /tmp/opencv-* \
     && ln -s /usr/bin/python3 /usr/bin/python
+
+RUN set -x \
+    && apk --no-cache add \
+        dbus \
+        mesa-dri-swrast 
