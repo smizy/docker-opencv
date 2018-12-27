@@ -1,4 +1,4 @@
-FROM smizy/scikit-learn:0.20.1-alpine
+FROM smizy/scikit-learn:0.20.0-alpine
 
 ARG BUILD_DATE
 ARG BUILD_NUMBER
