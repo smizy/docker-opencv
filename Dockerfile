@@ -1,4 +1,4 @@
-FROM smizy/scikit-learn:0.20.0-alpine
+FROM smizy/scikit-learn:0.20.3-alpine
 
 ARG BUILD_DATE
 ARG BUILD_NUMBER
@@ -31,7 +31,8 @@ RUN set -x \
         libavc1394 \
         # libdc1394 \
         libjpeg-turbo \
-        libgomp \
+        # - segfault
+        # libgomp \
         libgphoto2 \
         libpng \
         libwebp \
@@ -41,7 +42,6 @@ RUN set -x \
         tiff \
         v4l-utils \
         zlib \
-    # - opencv build dependencies
     && apk --no-cache add --virtual .builddeps.opencv \
         ffmpeg-dev \
         gstreamer-dev \
@@ -81,7 +81,8 @@ RUN set -x \
         -D BUILD_SHARED_LIBS=True \
         -D CMAKE_BUILD_TYPE=Release \
         -D ENABLE_PRECOMPILED_HEADERS=NO \
-        -D WITH_OPENMP=YES \
+        # - segfault
+        -D WITH_OPENMP=NO \
         -D WITH_OPENCL=YES \
         -D WITH_IPP=NO \
         -D WITH_1394=NO \
@@ -117,4 +118,5 @@ RUN set -x \
 RUN set -x \
     && apk --no-cache add \
         dbus \
-        mesa-dri-swrast 
+        mesa-dri-swrast \
+        py3-pillow
